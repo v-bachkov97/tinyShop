@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="../css/fonts/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>address</title>
+</head>
+
+<body>
+
+<nav th:replace="fragments/navbar"></nav>
+
+<div class="alert alert-info">
+    <strong> Hello customer! Looks like that's the first time you are making an order. To finalize your order
+        please fill and save your address details.
+    </strong>
+</div>
+
+
+<container>
+    <section class="vh-100 bg-image">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Address Details</h2>
+
+                                <form
+                                        th:action="@{/profile/address-details}"
+                                        th:method="POST"
+                                        th:object="${addressDTO}">
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Address</label>
+                                        <input class="form-control form-control-lg"
+                                               type="text"
+                                               th:field="*{name}"
+                                               th:errorclass="is-invalid"
+                                               placeholder="Enter your address">
+                                        <p class="invalid-feedback">
+                                            Address is required and should be between 2 and 35 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Building Number</label>
+                                        <input class="form-control form-control-lg"
+                                               type="text"
+                                               th:field="*{number}"
+                                               th:errorclass="is-invalid"
+                                               placeholder="Enter your building number">
+                                        <p class="invalid-feedback">
+                                            Building Number is required and must be positive number.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">City/Province</label>
+                                        <input class="form-control form-control-lg"
+                                               type="text"
+                                               th:field="*{cityOrProvince}"
+                                               th:errorclass="is-invalid"
+                                               placeholder="Enter your residence">
+                                        <p class="invalid-feedback">
+                                            City/Province is required and should be between 2 and 20 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Postal Code</label>
+                                        <input class="form-control form-control-lg"
+                                               type="text"
+                                               th:field="*{postalCode}"
+                                               th:errorclass="is-invalid"
+                                               placeholder="Enter postal code">
+                                        <p class="invalid-feedback">
+                                            Postal Code is required and should be between 3 and 8 symbols.
+                                            Must be positive number.
+                                        </p>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Save
+                                        </button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</container>
+
+
+<section th:replace="/fragments/footer"></section>
+
+
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>

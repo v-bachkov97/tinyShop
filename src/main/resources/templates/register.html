@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="../css/fonts/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+
+</head>
+
+<body>
+
+
+<nav th:replace="fragments/navbar"></nav>
+
+
+<container>
+    <section class="bg-image">
+        <div class="mask d-flex align-items-center gradient-custom-3">
+            <div class="container">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                <form th:action="@{/register}" th:method="POST" th:object="${userRegistrationDTO}">
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Full Name</label>
+                                        <input class="form-control form-control-lg"
+                                               name="fullName"
+                                               th:field="*{fullName}"
+                                               th:errorclass="is-invalid"
+                                               type="text"
+                                               placeholder="Enter your name">
+                                        <p class="invalid-feedback">
+                                            Full name is required and should be between 4 and 25 symbols.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Birth Date</label>
+                                        <input class="form-control form-control-lg"
+                                               name="birthDate"
+                                               th:field="*{birthDate}"
+                                               th:errorclass="is-invalid"
+                                               type="date"
+                                        max="2999-12-31">
+                                        <p class="invalid-feedback">
+                                            Birth date should be in the past.
+                                        </p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Email</label>
+                                        <input class="form-control form-control-lg"
+                                               name="email"
+                                               th:field="*{email}"
+                                               th:errorclass="is-invalid"
+                                               type="text"
+                                               placeholder="Enter your email">
+                                        <p class="invalid-feedback">
+                                            Email is required and should be between 4 and 30 symbols.
+                                        </p>
+                                        <div th:if="${emailTaken}">
+                                            <p class="notMatch">This email is already registered.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Gender</label>
+                                        <select class="form-control form-control-lg"
+                                                th:field="*{gender}"
+                                                th:errorclass="is-invalid"
+                                                name="gender">
+                                            <option value="" selected>Select gender</option>
+                                            <option th:each="g : ${T(com.example.tinyshop.model.enums.GenderCategory).values()}"
+                                                    th:value="${g}" th:text="${g}"></option>
+
+                                        </select>
+                                        <p class="invalid-feedback">Please select your gender.</p>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Password</label>
+                                        <input class="form-control form-control-lg"
+                                               name="password"
+                                               th:field="*{password}"
+                                               th:errorclass="is-invalid"
+                                               type="password"
+                                               placeholder="Enter your password">
+                                        <p class="invalid-feedback">
+                                            Password is required and should be between 6 and 20 symbols.
+                                        </p>
+                                    </div>
+
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input class="form-control form-control-lg"
+                                               name="confirmPassword"
+                                               th:field="*{confirmPassword}"
+                                               th:errorclass="is-invalid"
+                                               type="password"
+                                               placeholder="Confirm your password">
+                                        <div th:if="${passwordsDontMatch}">
+                                            <p class="notMatch">Passwords don't match.</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class=" d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Register
+                                        </button>
+                                    </div>
+
+                                    <p class="text-center text-muted mt-5 mb-0">Have already an account? <a
+                                            href="/login" class="fw-bold text-body"><u>Login here</u></a></p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</container>
+
+<section th:replace="/fragments/footer"></section>
+
+
+<script src="../js/app.js"></script>
+</body>
+
+
+</html>

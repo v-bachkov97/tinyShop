@@ -1,0 +1,21 @@
+.container {
+    display: block;
+    justify-content: space-around;
+}
+
+h1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.main-border-button a {
+    margin-bottom: 300px;
+    font-size: 13px;
+    color: black;
+    border: 1px solid black;
+    padding: 12px 25px;
+    display: inline-block;
+    font-weight: 500;
+    transition: all .3s;
+
+}

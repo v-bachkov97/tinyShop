@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/home/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/home/font-awesome.css">
+    <link rel="stylesheet" href="../css/home/templatemo-hexashop.css">
+    <link rel="stylesheet" href="../css/home/owl-carousel.css">
+    <link rel="stylesheet" href="../css/home/lightbox.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>home</title>
+</head>
+
+<body>
+<nav th:replace="fragments/navbar"></nav>
+
+<!--<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"-->
+<!--     aria-labelledby="staticBackdropLabel">-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body ">
+
+                <div class="px-4 py-5">
+
+                    <h5 class="text-uppercase" th:text="${orderDetails.get('name')}"></h5>
+
+
+                    <h4 class="mt-5 theme-color mb-5">Thanks for your order</h4>
+
+                    <span class="theme-color">Address Details</span>
+                    <div class="mb-3">
+                        <hr class="new1">
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <span class="font-weight-bold" th:text="${orderDetails.get('street')}"></span>
+                        <span class="font-weight-bold" th:text="${orderDetails.get('city')}"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <small>Shipping</small>
+                        <small>$8.50</small>
+                    </div>
+
+
+                    <div class="d-flex justify-content-between mt-3">
+                        <span class="font-weight-bold">Total</span>
+                        <span class="font-weight-bold theme-color"
+                              th:text=" '$' +  ${orderDetails.get('totalPrice')}"></span>
+                    </div>
+
+
+                    <div class="text-center mt-5">
+                        <form th:action="@{/}"
+                              th:method="GET">
+                            <div>
+                                <button class="btn btn-primary" type="submit">Home</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+
+
+<section th:replace="/fragments/footer"></section>
+
+
+<script src="../js/app.js"></script>
+<script src="../js/order-sent.js"></script>
+
+</body>
+
+</html>

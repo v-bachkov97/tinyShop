@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/home/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/home/font-awesome.css">
+    <link rel="stylesheet" href="../css/home/templatemo-hexashop.css">
+    <link rel="stylesheet" href="../css/home/owl-carousel.css">
+    <link rel="stylesheet" href="../css/home/lightbox.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <title>home</title>
+</head>
+
+<body>
+<nav th:replace="fragments/navbar"></nav>
+
+<div class="main-banner" id="top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="left-content">
+                    <div class="thumb">
+                        <div class="inner-content">
+                            <h4>We Are tinySHOP</h4>
+                            <span>A store that sells Style</span>
+                        </div>
+                        <img src="/images/images/left-banner-image.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Women</h4>
+                                        <span>Best Clothes For Women</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Women</h4>
+
+                                            <div class="main-border-button">
+                                                <a href="/collections/women">Discover More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="/images/images/baner-right-image-01.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Men</h4>
+                                        <span>Best Clothes For Men</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Men</h4>
+
+                                            <div class="main-border-button">
+                                                <a href="/collections/men">Discover More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="/images/images/baner-right-image-02.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-first-image">
+                                <div class="thumb">
+                                    <div class="inner-content">
+                                        <h4>Kids</h4>
+                                        <span>Best Clothes For Kids</span>
+                                    </div>
+                                    <div class="hover-content">
+                                        <div class="inner">
+                                            <h4>Kids</h4>
+
+                                            <div class="main-border-button">
+                                                <a href="/collections/kids">Discover More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="/images/images/baner-right-image-03.jpg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+
+<!-- ***** Men Area Starts ***** -->
+<section class="section" id="men">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>Men's Latest</h2>
+                    <span>Details to details is what makes tinyShop different from the other themes.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="men-item-carousel">
+                    <div class="owl-men-item owl-carousel">
+                        <div th:each="p : ${men}" th:object="${p}" class="item">
+                            <div class="thumb-new thumb" th:style="'background-image: url(' + *{path} + ')'">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a th:href="@{/collections/products/{id}/details(id=*{id})}"><i
+                                                class="fa fa-eye"></i></a>
+                                        </li>
+                                        <li><a href="/templates/single-product.html"><i class="fa fa-star"></i></a>
+                                        </li>
+                                        <li>
+                                            <form th:action="@{/cart/add/{id}(id=*{id})}"
+                                                  th:method="POST">
+                                                <div>
+                                                    <button class="divOpt" type="submit"><i
+                                                            class="fa fa-shopping-cart"></i></button>
+                                                </div>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <div class="down-content">
+                                <h4 th:text="*{name}"></h4>
+                                <span th:text="'$'+*{price}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Men Area Ends ***** -->
+
+<!-- ***** Women Area Starts ***** -->
+<section class="section" id="women">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>Women's Latest</h2>
+                    <span>Details to details is what makes tinyShop different from the other themes.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="women-item-carousel">
+                    <div class="owl-women-item owl-carousel">
+                        <div th:each="p : ${women}" th:object="${p}" class="item">
+                            <div class="thumb-new thumb" th:style="'background-image: url(' + *{path} + ')'">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a th:href="@{/collections/products/{id}/details(id=*{id})}"><i
+                                                class="fa fa-eye"></i></a>
+                                        </li>
+                                        <li><a href="/templates/single-product.html"><i class="fa fa-star"></i></a>
+                                        </li>
+                                        <li>
+                                            <form th:action="@{/cart/add/{id}(id=*{id})}"
+                                                  th:method="POST">
+                                                <div>
+                                                    <button class="divOpt" type="submit"><i
+                                                            class="fa fa-shopping-cart"></i></button>
+                                                </div>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--                                <img src="/images/images/women-01.jpg" alt="">-->
+                            </div>
+                            <div class="down-content">
+                                <h4 th:text="*{name}"></h4>
+                                <span th:text="'$'+*{price}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Women Area Ends ***** -->
+
+<!-- ***** Kids Area Starts ***** -->
+<section class="section" id="kids">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>Kid's Latest</h2>
+                    <span>Details to details is what makes tinyShop different from the other themes.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="kid-item-carousel">
+                    <div class="owl-kid-item owl-carousel">
+                        <div th:each="p : ${kids}" th:object="${p}" class="item">
+                            <div class="thumb-new thumb" th:style="'background-image: url(' + *{path} + ')'">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a th:href="@{/collections/products/{id}/details(id=*{id})}"><i
+                                                class="fa fa-eye"></i></a>
+                                        </li>
+                                        <li><a href="/templates/single-product.html"><i class="fa fa-star"></i></a>
+                                        </li>
+                                        <li>
+                                            <form th:action="@{/cart/add/{id}(id=*{id})}"
+                                                  th:method="POST">
+                                                <div>
+                                                    <button class="divOpt" type="submit"><i
+                                                            class="fa fa-shopping-cart"></i></button>
+                                                </div>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4 th:text="*{name}"></h4>
+                                <span th:text="'$' + *{price}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Kids Area Ends ***** -->
+
+<!-- ***** Explore Area Starts ***** -->
+<section class="section" id="explore">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="left-content">
+                    <h2>Explore Our Products</h2>
+                    <span>Latest trends in clothing from tinyShop Online. Check out trendy models for this
+                            season.</span>
+                    <div class="quote">
+                        <i class="fa fa-quote-left"></i>
+                        <p> We partner with the best in the industry to co-create.</p>
+                    </div>
+                    <p>
+                        Energetic outfits are waiting for you!
+                    </p>
+
+                    <div class="main-border-button">
+                        <a href="/about">Discover More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="right-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="leather">
+                                <h4>Trendy Bags</h4>
+                                <span>Latest Collection</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="first-image">
+                                <img src="/images/images/explore-image-01.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="second-image">
+                                <img src="/images/images/explore-image-02.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="types">
+                                <h4>Different Types</h4>
+                                <span>Find Yours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Explore Area Ends ***** -->
+
+
+<section th:replace="/fragments/footer"></section>
+<!-- jQuery -->
+<script src="../js/home/jquery-2.1.0.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="../js/home/popper.js"></script>
+<script src="../js/home/bootstrap.min.js"></script>
+
+<!-- Plugins -->
+<script src="../js/home/owl-carousel.js"></script>
+<script src="../js/home/accordions.js"></script>
+<script src="../js/home/datepicker.js"></script>
+<script src="../js/home/scrollreveal.min.js"></script>
+<script src="../js/home/waypoints.min.js"></script>
+<script src="../js/home/jquery.counterup.min.js"></script>
+<script src="../js/home/imagesfix.min.js"></script>
+<script src="../js/home/slick.js"></script>
+<script src="../js/home/lightbox.js"></script>
+<script src="../js/home/isotope.js"></script>
+
+<!-- Global Init -->
+<script src="../js/home/custom.js"></script>
+
+<script>
+
+    $(function () {
+        var selectedClass = "";
+        $("p").click(function () {
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+            $("#portfolio div").not("." + selectedClass).fadeOut();
+            setTimeout(function () {
+                $("." + selectedClass).fadeIn();
+                $("#portfolio").fadeTo(50, 1);
+            }, 500);
+
+        });
+    });
+
+</script>
+
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>

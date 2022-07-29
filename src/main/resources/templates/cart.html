@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <title>Cart</title>
+</head>
+
+<body>
+
+<nav th:replace="fragments/navbar"></nav>
+
+<div class="container">
+    <h1>Shopping Cart</h1>
+    <div class="cart">
+        <div class="products">
+            <div th:each="p : ${products}" th:object="${p}" class="product">
+
+                <img th:src="*{path}">
+                <div class="product-info">
+                    <h3 class="product-name" th:text="*{name}"></h3>
+                    <h4 class="product-price" th:text="'$' + *{price}"></h4>
+                    <p class="product-remove">
+                    <form th:action="@{/cart/remove/{id}(id=*{id})}"
+                          th:method="POST">
+
+                        <button class="removeBtn" type="submit"><i class="fa fa-trash" aria-hidden="true">Remove</i>
+                        </button>
+
+                    </form>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="cart-total">
+            <p>
+                <span>Total Price</span>
+                <span th:text=" '$' + *{totalPrice}"></span>
+            </p>
+            <p>
+                <span>Number of Items</span>
+                <span th:text="*{count}"></span>
+            </p>
+
+            <form th:action="@{/cart/checkout}"
+                  th:method="POST">
+                <div th:unless="${isEmpty}">
+                    <button class="checkoutBtn" type="submit"><i
+                            class="fa fa-shopping-cart">Checkout</i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<section th:replace="/fragments/footer"></section>
+
+
+<script src="../js/cart.js"></script>
+<script src="../js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<nav class="navigation-class"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <div class="logo">
+        <h4>tinyShop</h4>
+    </div>
+    <ul class="nav-links">
+        <th:block sec:authorize="!isAuthenticated()">
+            <li><a href="/" th:text="#{navbar_home}">Home</a></li>
+            <li><a href="/collections/men" th:text="#{navbar_men}">Men</a></li>
+            <li><a href="/collections/women" th:text="#{navbar_women}">Women</a></li>
+            <li><a href="/collections/kids" th:text="#{navbar_kids}">Kids</a></li>
+            <li>
+                <div class="dropdown">
+                    <a class="pagesBtn" tabindex="-1" th:text="#{navbar_pages}">Pages</a>
+                    <div class="dropdown-content">
+                        <a href="/about" th:text="#{navbar_about}">About us</a>
+                        <form th:method="GET">
+                            <select class="langBtn"
+                                    onchange=this.form.submit();
+                                    id="lang"
+                                    name="lang">
+                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                            </select>
+                        </form>
+                        <th:block sec:authorize="isAuthenticated()">
+                            <a href="/contacts">Contacts</a>
+                        </th:block>
+                    </div>
+                </div>
+            </li>
+            <li><a href="/register" th:text="#{navbar_register}">Register</a></li>
+            <li><a href="/login" th:text="#{navbar_login}">Login</a></li>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <li><a href="/" th:text="#{navbar_home}">Home</a></li>
+            <li><a href="/collections/men" th:text="#{navbar_men}">Men</a></li>
+            <li><a href="/collections/women" th:text="#{navbar_women}">Women</a></li>
+            <li><a href="/collections/kids" th:text="#{navbar_kids}">Kids</a></li>
+            <li>
+                <div class="dropdown">
+                    <a class="pagesBtn" tabindex="-1" th:text="#{navbar_pages}">Pages</a>
+                    <div class="dropdown-content">
+                        <a href="/about" th:text="#{navbar_about}">About us</a>
+                        <a href="/contacts" th:text="#{navbar_contacts}">Contacts</a>
+                        <form th:method="GET">
+                            <select class="langBtn"
+                                    onchange=this.form.submit();
+                                    id="lang"
+                                    name="lang">
+                                <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">English</option>
+                                <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a class="profileBtn" tabindex="-1" th:text="#{navbar_profile}">Profile</a>
+                    <i class='fas fa-user-alt' style="color: white;margin-left: 5px;"></i>
+                    <div class="dropdown-content">
+                        <form th:action="@{/logout}" th:method="post">
+                            <input class="logoutBtn" type="submit" th:value="#{navbar_logout}">
+                        </form>
+                        <!--                        <a href="/profile/edit" th:text="#{navbar_editProfile}">Edit Profile</a>-->
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="/profile/cart" th:text="#{navbar_cart}"></a>
+                <i class="fa fa-shopping-cart" aria-hidden="true" style="color: white;"></i>
+<!--                <span-->
+<!--                        class="badge badge-pill badge-danger" style="margin-left: 5px;"-->
+<!--                        th:text="${#authentication.principal.getCart().getProducts().size()}"></span>-->
+            </li>
+        </th:block>
+    </ul>
+
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+</nav>

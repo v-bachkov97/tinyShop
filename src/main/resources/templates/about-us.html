@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about-us.css">
+    <title>About us</title>
+</head>
+
+<body>
+
+<nav th:replace="fragments/navbar"></nav>
+
+<container>
+
+    <div class="video-main">
+        <video autoplay="autoplay" loop muted>
+            <source src="../images/videos/about.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="txt-top-banner">
+        <h2>Find more about us</h2>
+        <p>
+            <strong>tinyShop</strong>
+            caters to thoughtful shoppers who appreciate unique designs and
+            <a>top quality</a>
+            pieces you just can’t find anywhere else. We are constantly curating fresh new collections and looking
+            for the next big thing our customers will love. Founded in
+            <span>Sofia</span>
+            in 2022, we are proud to be your <span>Online Clothing Shop</span> that you can rely on for our expert
+            service and care.
+        </p>
+    </div>
+
+    <div class="txt-third-full">
+        <div class="txt-third-bg thr-col11">
+
+            <div class="txt-third-img">
+                <img src="../images/icons/mission.webp">
+            </div>
+            <strong>Our Mission </strong>is to make a difference through our branding by staying ahead of the
+            fashion trends, defining style and giving customers what they want.
+
+        </div>
+
+        <div class="txt-third-bg thr-col22">
+            <div class="txt-third-img">
+                <img src="../images/icons/vision.webp">
+            </div>
+            <strong>Our Vision</strong> is to change the way our society connects with the fashion industry by
+            providing our customers with products that are ethically and responsibly sourced.
+
+        </div>
+    </div>
+
+</container>
+
+
+<section th:replace="/fragments/footer"></section>
+
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>
