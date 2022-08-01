@@ -97,6 +97,7 @@
 
 .nav-active {
     transform: translateX(0%);
+    z-index: 5;
 }
 
 @keyframes navLinkFade {
@@ -252,5 +253,15 @@
     display: inline-block;
     font-weight: 500;
     transition: all .3s;
+}
+.hover-content ul{
+    margin-bottom: 0px;
+    display: flex;
+    position: absolute;
+    bottom: -60%;
+    left: 28%;
+}
+.hover-content ul li a{
+    border: solid 2px;
 }
 

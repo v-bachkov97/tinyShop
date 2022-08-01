@@ -42,7 +42,7 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @OneToMany
+    @OneToMany(mappedBy = "buyer")
     private List<Order> orders;
 
     public User() {

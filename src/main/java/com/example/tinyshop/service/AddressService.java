@@ -32,7 +32,6 @@ public class AddressService {
         user.get().setAddress(address);
 
         userRepository.save(user.get());
-        addressRepository.save(address);
 
     }
 

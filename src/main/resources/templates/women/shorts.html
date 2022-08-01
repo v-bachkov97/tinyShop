@@ -60,7 +60,7 @@
                         <div class="hover-content">
                             <ul>
                                 <li><a th:href="@{/collections/products/{id}/details(id=*{id})}"><i class="fa fa-eye"></i></a></li>
-                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+
                                 <li><form th:action="@{/cart/add/{id}(id=*{id})}"
                                           th:method="POST">
                                         <div>

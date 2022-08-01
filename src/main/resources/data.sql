@@ -1,7 +1,5 @@
 -- INSERT PRODUCTS FOR MEN --
 
-
-
 -- INSERT T-SHIRTS--
 INSERT INTO products(id,brand,color,fabric,name,path,price,size,category_id,collection_id,added_on)
 VALUES (1,'HUGO','black','cotton','HUGO "Dulive" T-Shirt','/images/images/men/t-shirts/hugo-1.jpg',44.90,'L',1,1,'2022-08-01');

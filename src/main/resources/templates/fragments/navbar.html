@@ -45,6 +45,8 @@
                     <div class="dropdown-content">
                         <a href="/about" th:text="#{navbar_about}">About us</a>
                         <a href="/contacts" th:text="#{navbar_contacts}">Contacts</a>
+                        <a sec:authorize="hasRole('ADMIN')" href="/admin-panel" th:text="#{navbar_admin}">Admin Panel</a>
+                        <a sec:authorize="hasAnyRole('ROLE_MODERATOR','ROLE_ADMIN')" href="/moderator-panel" th:text="#{navbar_moderator}">Add Product</a>
                         <form th:method="GET">
                             <select class="langBtn"
                                     onchange=this.form.submit();
