@@ -4,6 +4,7 @@ import com.example.tinyshop.model.entity.Role;
 import com.example.tinyshop.model.entity.User;
 import com.example.tinyshop.model.enums.RolesEnum;
 import com.example.tinyshop.model.view.AdminPanelUserView;
+import com.example.tinyshop.repository.MessageRepository;
 import com.example.tinyshop.repository.OrderRepository;
 import com.example.tinyshop.repository.RoleRepository;
 import com.example.tinyshop.repository.UserRepository;
@@ -22,13 +23,15 @@ public class AdminService {
    private final ModelMapper modelMapper;
    private final RoleRepository roleRepository;
    private final OrderRepository orderRepository;
+   private final MessageRepository messageRepository;
 
 
-    public AdminService(UserRepository userRepository, ModelMapper modelMapper, RoleRepository roleRepository, OrderRepository orderRepository) {
+    public AdminService(UserRepository userRepository, ModelMapper modelMapper, RoleRepository roleRepository, OrderRepository orderRepository, MessageRepository messageRepository) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.roleRepository = roleRepository;
         this.orderRepository = orderRepository;
+        this.messageRepository = messageRepository;
     }
 
     public List<AdminPanelUserView> findAll(long id) {
@@ -72,6 +75,8 @@ public class AdminService {
     @Transactional
     public void deleteAccount(long id) {
         orderRepository.deleteAllByBuyerId(id);
+        messageRepository.deleteAllBySenderId(id);
         userRepository.deleteById(id);
+
     }
 }
